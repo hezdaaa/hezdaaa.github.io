@@ -307,6 +307,7 @@
             gap: 0.8rem;
         }
 
+        /* 小说内部样式 */
         .novel-content h2.novel-title {
             font-size: 1.6rem;
             color: #bf360c;
@@ -315,6 +316,18 @@
             border-bottom: 2px dashed #ffb74d;
             padding-bottom: 0.4rem;
             font-weight: 700;
+        }
+
+        /* 新增大号加粗文字样式 */
+        .novel-content .highlight-bold {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #bf360c;
+            display: block;
+            margin: 1rem 0;
+            text-align: center;
+            text-shadow: 1px 1px 0 rgba(255,183,77,0.3);
+            letter-spacing: 1px;
         }
 
         .novel-content p {
@@ -359,7 +372,7 @@
             color: #5d4037;
         }
 
-        .novel-download {
+        .novel-download, .fullscreen-btn {
             background: white;
             border: 2px solid #ffb74d;
             color: #bf360c;
@@ -372,9 +385,10 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            cursor: pointer;
         }
 
-        .novel-download:hover {
+        .novel-download:hover, .fullscreen-btn:hover {
             background: #ffb74d;
             color: white;
             border-color: #ffb74d;
@@ -459,7 +473,7 @@
             </div>
         </section>
 
-        <!-- 板块3：王宸泽介绍（根据小说内容更新） -->
+        <!-- 板块3：王宸泽介绍 -->
         <section class="section" id="introduction">
             <div class="section-header">
                 <span class="icon">📋</span>
@@ -551,10 +565,24 @@
             </div>
             <div class="novel-footer">
                 <span class="word-count" id="word-count">字数统计中…</span>
-                <a href="assets/article/1740%E5%90%8C%E4%BA%BA%E6%96%87.txt" class="novel-download" download>
-                    ⬇️ 下载TXT全文
-                </a>
+                <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                    <button class="fullscreen-btn" id="fullscreen-btn" title="全屏阅读">
+                        🖥️ 全屏阅读
+                    </button>
+                    <a href="assets/article/1740%E5%90%8C%E4%BA%BA%E6%96%87.txt" class="novel-download" download>
+                        ⬇️ 下载TXT全文
+                    </a>
+                </div>
             </div>
+        </section>
+
+        <!-- 板块6：留言板 -->
+        <section class="section" id="comments">
+            <div class="section-header">
+                <span class="icon">💬</span>
+                <h2>留言板</h2>
+            </div>
+            <div id="utterances-comments"></div>
         </section>
 
         <div class="footer-note">
@@ -579,7 +607,7 @@
             });
         })();
 
-        // 2. 加载同人小说并自动识别 ##标题##
+        // 2. 加载同人小说并识别 ##标题## 和 #{{大号加粗文字}}#
         (function() {
             const novelContainer = document.getElementById('novel-container');
             const wordCountSpan = document.getElementById('word-count');
@@ -603,13 +631,25 @@
                         html += '<br>';
                         continue;
                     }
+
+                    // 检测 ##标题##
                     const titleMatch = trimmed.match(/^##(.+)##$/);
                     if (titleMatch) {
                         const title = escapeHtml(titleMatch[1].trim());
-                        html += `<h2 class="novel-title">${title}</h2>`
-                    } else {
-                        html += `<p>${escapeHtml(trimmed)}</p>`;
+                        html += `<h2 class="novel-title">${title}</h2>`;
+                        continue;
                     }
+
+                    // 检测 #{{大号加粗文字}}#
+                    const boldMatch = trimmed.match(/^#{{(.+)}}#$/);
+                    if (boldMatch) {
+                        const boldText = escapeHtml(boldMatch[1].trim());
+                        html += `<span class="highlight-bold">${boldText}</span>`;
+                        continue;
+                    }
+
+                    // 普通段落
+                    html += `<p>${escapeHtml(trimmed)}</p>`;
                 }
                 return html;
             }
@@ -627,7 +667,9 @@
                     }
                     novelContainer.innerHTML = parseNovelToHtml(text);
                     novelContainer.classList.remove('loading');
-                    const plainText = text.replace(/^##.*##$/gm, '');
+
+                    // 统计字数（排除标记符号）
+                    const plainText = text.replace(/^##.*##$/gm, '').replace(/^#{{.*}}#$/gm, '');
                     const chineseChars = plainText.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g);
                     const count = chineseChars ? chineseChars.length : 0;
                     wordCountSpan.textContent = `📊 全文约 ${count} 字`;
@@ -644,6 +686,48 @@
                     `;
                     wordCountSpan.textContent = '字数统计失败';
                 });
+        })();
+
+        // 3. 全屏阅读功能
+        (function() {
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const novelContainer = document.getElementById('novel-container');
+
+            if (!fullscreenBtn || !novelContainer) return;
+
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    novelContainer.requestFullscreen().catch(err => {
+                        alert('全屏功能启动失败，可能是浏览器不支持。');
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+
+            // 监听全屏变化，更新按钮文字
+            document.addEventListener('fullscreenchange', () => {
+                if (document.fullscreenElement) {
+                    fullscreenBtn.innerHTML = '🖥️ 退出全屏';
+                } else {
+                    fullscreenBtn.innerHTML = '🖥️ 全屏阅读';
+                }
+            });
+        })();
+
+        // 4. 初始化 utterances 评论区
+        (function() {
+            var utterancesDiv = document.getElementById('utterances-comments');
+            if (!utterancesDiv) return;
+
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.setAttribute('repo', 'hezdaaa/hezdaaa.github.io');
+            script.setAttribute('issue-term', 'pathname');
+            script.setAttribute('theme', 'preferred-color-scheme');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+            utterancesDiv.appendChild(script);
         })();
     </script>
 </body>
