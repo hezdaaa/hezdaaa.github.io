@@ -1,8 +1,650 @@
 <!DOCTYPE html>
-<html>
-<head><title>17c40.com厦门新饼干人娱乐城</title></head>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>厦门新饼干人娱乐城</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fef9e7 0%, #fdebd0 100%);
+            color: #4e342e;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 40px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 251, 245, 0.85);
+            backdrop-filter: blur(14px);
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem 2rem;
+            border: 2px solid #ffe0b2;
+        }
+
+        .site-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .site-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d84315, #bf360c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            text-shadow: 2px 2px 0 rgba(255, 224, 178, 0.5);
+        }
+
+        .domain-badge {
+            background: #ffcc80;
+            color: #3e2723;
+            display: inline-block;
+            padding: 0.4rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 0 #e69a4e;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8d6e63;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .section {
+            margin: 2.5rem 0;
+            background: white;
+            border-radius: 36px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 15px 30px -8px rgba(100, 60, 20, 0.2);
+            border: 1px solid #ffe0b2;
+            transition: transform 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.8rem;
+        }
+
+        .section-header .icon {
+            font-size: 2.2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #bf360c;
+            border-bottom: 4px dashed #ffb74d;
+            padding-bottom: 0.2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .photo-card {
+            background: #fff3e0;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s;
+            border: 2px solid #ffcc80;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 30px rgba(190, 90, 20, 0.25);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            background: #f5e1ce;
+        }
+
+        .photo-caption {
+            padding: 0.7rem;
+            font-weight: 600;
+            color: #5d4037;
+            background: #ffe0b2;
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .wedding-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .wedding-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 15px 35px rgba(180, 100, 50, 0.25);
+            border: 4px solid #ffb74d;
+            background: #fbe9e7;
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .wedding-label {
+            font-size: 1.2rem;
+            background: #ffb74d;
+            color: white;
+            padding: 0.4rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .intro-text {
+            background: #fff8f0;
+            padding: 1.5rem;
+            border-radius: 24px;
+            font-size: 1.15rem;
+            color: #4e342e;
+            border-left: 10px solid #ff8a65;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            line-height: 1.8;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #bf360c;
+            background: linear-gradient(120deg, #ffe0b2 0%, #ffe0b2 40%);
+            padding: 0 4px;
+        }
+
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .video-card {
+            background: #fff3e0;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border: 2px solid #ffcc80;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            background: #000;
+            border-radius: 24px 24px 0 0;
+            outline: none;
+        }
+
+        .video-card .video-title {
+            padding: 0.6rem;
+            font-weight: 600;
+            color: #5d4037;
+            background: #ffe0b2;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .video-note {
+            color: #795548;
+            font-size: 0.9rem;
+            background: #fbe9e7;
+            padding: 0.5rem 1.8rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: white;
+            border: 2px solid #ffb74d;
+            color: #bf360c;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0.5rem 0 0.8rem;
+            transition: 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #ffb74d;
+            color: white;
+            border-color: #ffb74d;
+        }
+
+        .novel-content {
+            background: #fef3e4;
+            border: 2px dashed #d7a86e;
+            border-radius: 24px;
+            padding: 1.8rem;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Georgia', 'Noto Serif SC', 'KaiTi', '楷体', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #4b3621;
+            white-space: pre-wrap;
+            word-break: break-word;
+            box-shadow: inset 0 4px 12px rgba(160, 100, 20, 0.1);
+            margin-top: 1rem;
+        }
+
+        .novel-content.loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #a1887f;
+            font-style: italic;
+        }
+
+        .novel-content.error {
+            color: #b71c1c;
+            background: #ffebee;
+            border-color: #ef9a9a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .novel-content h2.novel-title {
+            font-size: 1.6rem;
+            color: #bf360c;
+            margin: 1.5rem 0 0.8rem;
+            text-align: center;
+            border-bottom: 2px dashed #ffb74d;
+            padding-bottom: 0.4rem;
+            font-weight: 700;
+        }
+
+        .novel-content p {
+            text-indent: 2em;
+            margin: 0.5rem 0;
+        }
+
+        .novel-content br {
+            display: block;
+            content: '';
+            margin-top: 0.5rem;
+        }
+
+        .novel-content::-webkit-scrollbar {
+            width: 12px;
+        }
+        .novel-content::-webkit-scrollbar-track {
+            background: #f9e4c9;
+            border-radius: 12px;
+        }
+        .novel-content::-webkit-scrollbar-thumb {
+            background: #d7a86e;
+            border-radius: 12px;
+            border: 3px solid #f9e4c9;
+        }
+
+        .novel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .word-count {
+            background: #ffe0b2;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #5d4037;
+        }
+
+        .novel-download {
+            background: white;
+            border: 2px solid #ffb74d;
+            color: #bf360c;
+            padding: 0.4rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .novel-download:hover {
+            background: #ffb74d;
+            color: white;
+            border-color: #ffb74d;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            color: #a1887f;
+            font-size: 0.9rem;
+            border-top: 2px dotted #ffcc80;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.8rem 1rem;
+            }
+            .site-header h1 {
+                font-size: 2.2rem;
+            }
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+            .novel-content {
+                max-height: 400px;
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
 <body>
-  <h1>Hello, 17c40!</h1>
-  <p>网站上线中！</p>
+    <div class="container">
+        <header class="site-header">
+            <h1>厦门新饼干人娱乐城</h1>
+            <div class="domain-badge">🌐 17c40.cn.mt</div>
+            <p class="subtitle">✨ 王宸泽专属页面 · 引力不灭，星光不散 ✨</p>
+        </header>
+
+        <!-- 板块1：王宸泽帅照 -->
+        <section class="section" id="photos-handsome">
+            <div class="section-header">
+                <span class="icon">📸</span>
+                <h2>王宸泽帅照</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="photo-card">
+                    <img src="assets/photos/cool1.jpg" alt="王宸泽帅照1">
+                    <div class="photo-caption">🌟 过家家就到此为止了…</div>
+                    <a href="assets/photos/cool1.jpg" class="download-btn" download="王宸泽帅照1.jpg">⬇️ 下载原图</a>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/photos/cool2.jpg" alt="王宸泽帅照2">
+                    <div class="photo-caption">🔥 伟大无需多言</div>
+                    <a href="assets/photos/cool2.jpg" class="download-btn" download="王宸泽帅照2.jpg">⬇️ 下载原图</a>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #8d6e63; text-align: right;">📌 更多帅照持续更新中…</p>
+        </section>
+
+        <!-- 板块2：王宸泽婚纱照 -->
+        <section class="section" id="wedding-photo">
+            <div class="section-header">
+                <span class="icon">💒</span>
+                <h2>婚纱照</h2>
+            </div>
+            <div class="wedding-wrapper">
+                <img 
+                    src="assets/photos/wedding.png" 
+                    alt="王宸泽婚纱照" 
+                    class="wedding-img"
+                    loading="lazy"
+                >
+                <span class="wedding-label">👑 唯一珍藏版</span>
+                <p style="color: #795548; max-width: 600px; text-align: center;">
+                    ⚜️ 引力之外，星光之间 ⚜️<br>在宇宙的初始条件里，早已写好了重逢的预言。
+                </p>
+                <a href="assets/photos/wedding.png" class="download-btn" download="王宸泽婚纱照.png">⬇️ 下载珍藏</a>
+            </div>
+        </section>
+
+        <!-- 板块3：王宸泽介绍（根据小说内容更新） -->
+        <section class="section" id="introduction">
+            <div class="section-header">
+                <span class="icon">📋</span>
+                <h2>关于王宸泽</h2>
+            </div>
+            <div class="intro-text">
+                <p><span class="highlight">王宸泽</span> —— 从初中班长到国际知名物理学家，他的轨迹像一颗恒星，在无数人的青春里留下不可磨灭的光痕。</p>
+                <p>🌟 <strong>初中时代：</strong>班长、篮球队主力。那个在雨天把伞倾向她、在走廊里接过她手中作业本的少年，像一阵不请自来的风，带着少年特有的清朗和温度。他的出现总是这样——不经意，却恰好。</p>
+                <p>🔭 <strong>高中时代：</strong>天文社社长。戴细边眼镜，手指修长，调望远镜时专注的样子像在触摸宇宙的脉搏。"当我们凝视星空，其实是在凝视过去。"他说过的每一句话，都像一颗种子，落在听者的心里。</p>
+                <p>🏛️ <strong>大学时代：</strong>建筑系才子。爷爷是木匠，他说"好的建筑应该像好的榫卯——不用一颗钉子，也能牢牢地咬在一起几百年"。他的速写本里画满了斗拱和星云，还有那个仰头观察建筑侧影的女孩。</p>
+                <p>🌌 <strong>现在：</strong>「宸泽-李黑洞辐射修正公式」联合提出者，欧洲引力波探测站核心科学家。在阿尔卑斯山深处的实验室里，他聆听时空最细微的涟漪，同时哼着走调的《小星星》。</p>
+                <p>💬 <strong>他说过：</strong>"引力不是枷锁，它是理由——是我们还在这里的理由。""在无数可能的世界线中，我们恰好走在能够相遇的这一条上。"</p>
+                <p style="margin-top: 0.8rem; font-style: italic; color: #bf360c;">👉 想了解王宸泽的更多故事？请持续关注17c40.cn.mt更新！</p>
+            </div>
+        </section>
+
+        <!-- 板块4：在线观看王宸泽视频 -->
+        <section class="section" id="video-section">
+            <div class="section-header">
+                <span class="icon">🎬</span>
+                <h2>在线观看王宸泽视频</h2>
+            </div>
+            <div class="video-gallery">
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/1.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其一</div>
+                    <a href="assets/videos/1.mp4" class="download-btn" download="王宸泽视频1.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/2.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其二</div>
+                    <a href="assets/videos/2.mp4" class="download-btn" download="王宸泽视频2.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/3.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其三</div>
+                    <a href="assets/videos/3.mp4" class="download-btn" download="王宸泽视频3.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/4.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其四</div>
+                    <a href="assets/videos/4.mp4" class="download-btn" download="王宸泽视频4.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/5.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其五</div>
+                    <a href="assets/videos/5.mp4" class="download-btn" download="王宸泽视频5.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/6.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其六</div>
+                    <a href="assets/videos/6.mp4" class="download-btn" download="王宸泽视频6.mp4">⬇️ 下载视频</a>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" class="sync-video">
+                        <source src="assets/videos/7.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-title">🎥 日常碎片 · 其七</div>
+                    <a href="assets/videos/7.mp4" class="download-btn" download="王宸泽视频7.mp4">⬇️ 下载视频</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1.2rem;">
+                <span class="video-note">
+                    <span>🎬</span> 竖屏小视频系列 · 王宸泽的日常 <span>🍿</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- 板块5：同人小说阅读 -->
+        <section class="section" id="novel-section">
+            <div class="section-header">
+                <span class="icon">📖</span>
+                <h2>同人小说 · 引力与星光</h2>
+            </div>
+            <div id="novel-container" class="novel-content loading">
+                正在加载小说内容，请稍候...
+            </div>
+            <div class="novel-footer">
+                <span class="word-count" id="word-count">字数统计中…</span>
+                <a href="assets/article/1740%E5%90%8C%E4%BA%BA%E6%96%87.txt" class="novel-download" download>
+                    ⬇️ 下载TXT全文
+                </a>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            <p>🍪 厦门新饼干人娱乐城 · <strong>17c40.cn.mt</strong> 🍪</p>
+            <p>© 2025 饼干人星球娱乐部 | 王宸泽后援会倾情呈现</p>
+            <p style="margin-top: 0.4rem;">📧 合作/投稿：307045479@qq.com | bilibili:@hezdaaa</p>
+        </div>
+    </div>
+
+    <script>
+        // 1. 视频互斥：同一时刻仅允许一个视频播放
+        (function() {
+            const videos = document.querySelectorAll('.sync-video');
+            videos.forEach(video => {
+                video.addEventListener('play', () => {
+                    videos.forEach(v => {
+                        if (v !== video && !v.paused) {
+                            v.pause();
+                        }
+                    });
+                });
+            });
+        })();
+
+        // 2. 加载同人小说并自动识别 ##标题##
+        (function() {
+            const novelContainer = document.getElementById('novel-container');
+            const wordCountSpan = document.getElementById('word-count');
+            const txtUrl = 'assets/article/1740同人文.txt';
+
+            function escapeHtml(text) {
+                return text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            function parseNovelToHtml(text) {
+                const lines = text.split('\n');
+                let html = '';
+                for (let line of lines) {
+                    const trimmed = line.trim();
+                    if (trimmed === '') {
+                        html += '<br>';
+                        continue;
+                    }
+                    const titleMatch = trimmed.match(/^##(.+)##$/);
+                    if (titleMatch) {
+                        const title = escapeHtml(titleMatch[1].trim());
+                        html += `<h2 class="novel-title">${title}</h2>`
+                    } else {
+                        html += `<p>${escapeHtml(trimmed)}</p>`;
+                    }
+                }
+                return html;
+            }
+
+            fetch(txtUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`文件加载失败 (状态码: ${response.status})`);
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    if (!text || text.trim().length === 0) {
+                        throw new Error('小说内容为空');
+                    }
+                    novelContainer.innerHTML = parseNovelToHtml(text);
+                    novelContainer.classList.remove('loading');
+                    const plainText = text.replace(/^##.*##$/gm, '');
+                    const chineseChars = plainText.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g);
+                    const count = chineseChars ? chineseChars.length : 0;
+                    wordCountSpan.textContent = `📊 全文约 ${count} 字`;
+                })
+                .catch(error => {
+                    console.error('加载同人小说失败:', error);
+                    novelContainer.classList.remove('loading');
+                    novelContainer.classList.add('error');
+                    novelContainer.innerHTML = `
+                        <span style="font-size: 2rem;">📁</span>
+                        <p><strong>小说内容暂时无法显示</strong></p>
+                        <p style="font-size: 0.9rem;">可能原因：文件未找到、路径错误或网络问题。</p>
+                        <p style="font-size: 0.85rem; color: #5d4037;">请将 <code>1740同人文.txt</code> 放置在 <code>assets/article/</code> 目录下并重新加载。</p>
+                    `;
+                    wordCountSpan.textContent = '字数统计失败';
+                });
+        })();
+    </script>
 </body>
 </html>
